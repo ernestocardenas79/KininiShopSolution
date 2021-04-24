@@ -145,6 +145,56 @@
           }
         }
       }
+    },
+    "kinini-node": {
+      "root": "apps/kinini-node",
+      "sourceRoot": "apps/kinini-node/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/kinini-node",
+            "main": "apps/kinini-node/src/main.ts",
+            "tsConfig": "apps/kinini-node/tsconfig.app.json",
+            "assets": ["apps/kinini-node/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/kinini-node/src/environments/environment.ts",
+                  "with": "apps/kinini-node/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "kinini-node:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/kinini-node/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/kinini-node"],
+          "options": {
+            "jestConfig": "apps/kinini-node/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
