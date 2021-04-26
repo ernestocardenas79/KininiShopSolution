@@ -20,8 +20,17 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "extends": ["plugin:@nrwl/nx/typescript",
+                  "plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "semi":"off",
+        "object-curly-spacing":"off",
+        "@typescript-eslint/no-explicit-any":["error"],
+        "@typescript-eslint/semi": ["error"],
+        "@typescript-eslint/object-curly-spacing": ["error"],
+        "@typescript-eslint/no-empty-interface": ["error"],
+        "@typescript-eslint/consistent-type-definitions": "error"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

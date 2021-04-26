@@ -11,7 +11,10 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+
+
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

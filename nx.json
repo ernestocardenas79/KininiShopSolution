@@ -12,11 +12,11 @@
     }
   },
   "projects": {
-    "kinini-shop-ui": { "tags": [] },
+    "kinini-shop-ui": { "tags": ["angular","angular-apollo"] },
     "kinini-shop-ui-e2e": {
       "tags": [],
       "implicitDependencies": ["kinini-shop-ui"]
     },
-    "kinini-node": { "tags": [] }
+    "kinini-node": { "tags": ["graphql", "meang", "api-graphql", "stripe", "netlify"] }
   }
 }
