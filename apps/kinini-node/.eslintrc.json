@@ -4,17 +4,11 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "parserOptions": {
-        "project": ["apps/kinini-node/tsconfig.*?.json"]
-      },
       "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {
-
-
-      }
+      "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],

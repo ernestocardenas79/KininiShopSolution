@@ -14,37 +14,48 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
-        "accessToken": "ZTY0MWZjYjEtZTlmOS00Mzc1LWE2ZDAtYjQ5MGI5MTVhZDQ0fHJlYWQtd3JpdGU="
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "ZTY0MWZjYjEtZTlmOS00Mzc1LWE2ZDAtYjQ5MGI5MTVhZDQ0fHJlYWQtd3JpdGU=",
+        "parallel": 1
       }
     }
   },
-  "projects": {
-    "kinini-shop-ui": {
-      "tags": [
-        "angular",
-        "angular-apollo"
-      ]
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "kinini-shop-ui",
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
     },
-    "kinini-shop-ui-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "kinini-shop-ui"
-      ]
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
     },
-    "kinini-node": {
-      "tags": [
-        "graphql",
-        "meang",
-        "api-graphql",
-        "stripe",
-        "netlify"
-      ]
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
     }
   }
 }

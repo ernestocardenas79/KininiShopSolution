@@ -1,37 +1,58 @@
 {
   "version": 1,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "defaultProject": "kinini-shop-ui",
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
-    }
-  },
   "projects": {
+    "kinini-node": {
+      "root": "apps/kinini-node",
+      "sourceRoot": "apps/kinini-node/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/kinini-node",
+            "main": "apps/kinini-node/src/main.ts",
+            "tsConfig": "apps/kinini-node/tsconfig.app.json",
+            "assets": ["apps/kinini-node/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/kinini-node/src/environments/environment.ts",
+                  "with": "apps/kinini-node/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:node",
+          "options": {
+            "buildTarget": "kinini-node:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/kinini-node/**/*.ts"]
+          },
+          "outputs": ["{options.outputFile}"]
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/kinini-node"],
+          "options": {
+            "jestConfig": "apps/kinini-node/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["graphql", "meang", "api-graphql", "stripe", "netlify"]
+    },
     "kinini-shop-ui": {
       "projectType": "application",
       "root": "apps/kinini-shop-ui",
@@ -108,17 +129,19 @@
               "apps/kinini-shop-ui/src/**/*.ts",
               "apps/kinini-shop-ui/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/kinini-shop-ui"],
           "options": {
-            "jestConfig": "apps/kinini-shop-ui/jest.config.js",
+            "jestConfig": "apps/kinini-shop-ui/jest.config.ts",
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": ["angular", "angular-apollo"]
     },
     "kinini-shop-ui-e2e": {
       "root": "apps/kinini-shop-ui-e2e",
@@ -142,59 +165,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/kinini-shop-ui-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "kinini-node": {
-      "root": "apps/kinini-node",
-      "sourceRoot": "apps/kinini-node/src",
-      "projectType": "application",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/kinini-node",
-            "main": "apps/kinini-node/src/main.ts",
-            "tsConfig": "apps/kinini-node/tsconfig.app.json",
-            "assets": ["apps/kinini-node/src/assets"]
           },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/kinini-node/src/environments/environment.ts",
-                  "with": "apps/kinini-node/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "kinini-node:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/kinini-node/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/kinini-node"],
-          "options": {
-            "jestConfig": "apps/kinini-node/jest.config.js",
-            "passWithNoTests": true
-          }
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["kinini-shop-ui"]
     }
   }
 }

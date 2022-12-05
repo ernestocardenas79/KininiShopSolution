@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'kinini-node',
   preset: '../../jest.preset.js',
   globals: {
@@ -9,4 +10,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/kinini-node',
+  testEnvironment: 'node',
 };
