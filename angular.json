@@ -2,6 +2,7 @@
   "version": 1,
   "projects": {
     "kinini-node": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/kinini-node",
       "sourceRoot": "apps/kinini-node/src",
       "projectType": "application",
@@ -54,6 +55,7 @@
       "tags": ["graphql", "meang", "api-graphql", "stripe", "netlify"]
     },
     "kinini-shop-ui": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/kinini-shop-ui",
       "sourceRoot": "apps/kinini-shop-ui/src",
@@ -144,6 +146,7 @@
       "tags": ["angular", "angular-apollo"]
     },
     "kinini-shop-ui-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/kinini-shop-ui-e2e",
       "sourceRoot": "apps/kinini-shop-ui-e2e/src",
       "projectType": "application",
