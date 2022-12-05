@@ -1,22 +1,50 @@
 {
   "implicitDependencies": {
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     ".eslintrc.json": "*"
   },
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "npmScope": "kinini-shop",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "ZTY0MWZjYjEtZTlmOS00Mzc1LWE2ZDAtYjQ5MGI5MTVhZDQ0fHJlYWQtd3JpdGU="
+      }
     }
   },
   "projects": {
-    "kinini-shop-ui": { "tags": ["angular","angular-apollo"] },
+    "kinini-shop-ui": {
+      "tags": [
+        "angular",
+        "angular-apollo"
+      ]
+    },
     "kinini-shop-ui-e2e": {
       "tags": [],
-      "implicitDependencies": ["kinini-shop-ui"]
+      "implicitDependencies": [
+        "kinini-shop-ui"
+      ]
     },
-    "kinini-node": { "tags": ["graphql", "meang", "api-graphql", "stripe", "netlify"] }
+    "kinini-node": {
+      "tags": [
+        "graphql",
+        "meang",
+        "api-graphql",
+        "stripe",
+        "netlify"
+      ]
+    }
   }
 }
