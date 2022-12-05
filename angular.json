@@ -9,12 +9,16 @@
       "architect": {
         "build": {
           "builder": "@nrwl/webpack:webpack",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/kinini-node",
             "main": "apps/kinini-node/src/main.ts",
             "tsConfig": "apps/kinini-node/tsconfig.app.json",
-            "assets": ["apps/kinini-node/src/assets"],
+            "assets": [
+              "apps/kinini-node/src/assets"
+            ],
             "target": "node",
             "compiler": "tsc"
           },
@@ -41,20 +45,32 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/kinini-node/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/kinini-node/**/*.ts"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/kinini-node"],
+          "outputs": [
+            "coverage/apps/kinini-node"
+          ],
           "options": {
             "jestConfig": "apps/kinini-node/jest.config.ts",
             "passWithNoTests": true
           }
         }
       },
-      "tags": ["graphql", "meang", "api-graphql", "stripe", "netlify"]
+      "tags": [
+        "graphql",
+        "meang",
+        "api-graphql",
+        "stripe",
+        "netlify"
+      ]
     },
     "kinini-shop-ui": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -76,7 +92,9 @@
               "apps/kinini-shop-ui/src/favicon.ico",
               "apps/kinini-shop-ui/src/assets"
             ],
-            "styles": ["apps/kinini-shop-ui/src/styles.css"],
+            "styles": [
+              "apps/kinini-shop-ui/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -134,18 +152,25 @@
               "apps/kinini-shop-ui/src/**/*.html"
             ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/kinini-shop-ui"],
+          "outputs": [
+            "coverage/apps/kinini-shop-ui"
+          ],
           "options": {
             "jestConfig": "apps/kinini-shop-ui/jest.config.ts",
             "passWithNoTests": true
           }
         }
       },
-      "tags": ["angular", "angular-apollo"]
+      "tags": [
+        "angular",
+        "angular-apollo"
+      ]
     },
     "kinini-shop-ui-e2e": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -169,13 +194,19 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/kinini-shop-ui-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/kinini-shop-ui-e2e/**/*.{js,ts}"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       },
       "tags": [],
-      "implicitDependencies": ["kinini-shop-ui"]
+      "implicitDependencies": [
+        "kinini-shop-ui"
+      ]
     }
   }
 }
