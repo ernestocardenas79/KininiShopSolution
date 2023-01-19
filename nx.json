@@ -13,39 +13,10 @@
           "test",
           "e2e"
         ],
-        "accessToken": "ZTY0MWZjYjEtZTlmOS00Mzc1LWE2ZDAtYjQ5MGI5MTVhZDQ0fHJlYWQtd3JpdGU=",
-        "parallel": 1
+        "accessToken": "OTYwNmM5YWYtNWRmNy00ZWUxLWEyMWEtMjI4ODgzYjc1ZDI5fHJlYWQtd3JpdGU="
       }
     }
   },
-  "defaultProject": "kinini-shop-ui",
-  "generators": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
-    }
-  },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
       "dependsOn": [
@@ -56,17 +27,17 @@
         "^production"
       ]
     },
-    "e2e": {
-      "inputs": [
-        "default",
-        "^default"
-      ]
-    },
     "test": {
       "inputs": [
         "default",
-        "^default",
+        "^production",
         "{workspaceRoot}/jest.preset.js"
+      ]
+    },
+    "e2e": {
+      "inputs": [
+        "default",
+        "^production"
       ]
     },
     "lint": {
@@ -81,9 +52,29 @@
       "{projectRoot}/**/*",
       "sharedGlobals"
     ],
-    "sharedGlobals": [],
     "production": [
-      "default"
-    ]
-  }
+      "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/.eslintrc.json"
+    ],
+    "sharedGlobals": []
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "kinini-shop-ui"
 }

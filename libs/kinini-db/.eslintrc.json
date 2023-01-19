@@ -4,11 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "quotes": ["error", "single", { "allowTemplateLiterals": true}],
-        "semi":"error",
-        "curly":"error"
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],
