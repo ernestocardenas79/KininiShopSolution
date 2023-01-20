@@ -6,5 +6,5 @@ import {User} from './User';
 export class ResultUser extends ResultBase {
 
   @Field(()=>User)
-  reuslt: User;
+  result: User;
 }

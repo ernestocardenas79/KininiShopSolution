@@ -3,6 +3,6 @@ import {ResultBase} from './ResultBase';
 
 @ObjectType()
 export class ResultLogin extends ResultBase {
-  @Field()
+  @Field(()=>String,{nullable:true})
   token: string;
 }

@@ -23,6 +23,7 @@
     "@nrwl/angular": "15.3.3",
     "@nrwl/express": "15.3.3",
     "apollo-server-express": "^2.11.0",
+    "bcrypt": "^5.1.0",
     "chalk": "^4.0.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",

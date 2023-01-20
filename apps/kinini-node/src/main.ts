@@ -13,12 +13,12 @@ import {environment} from './environments/environment';
 import {ApolloServer} from 'apollo-server-express';
 import {buildSchema} from 'type-graphql';
 import {environmentSpecification} from './environments/environment.interface';
-import {Db} from 'mongodb';
 
 import {kininiDb} from './../../../libs/kinini-db/src/lib/kinini-db';
 import {UserResolver} from './app/resolvers';
 import {LoginResolver} from './app/resolvers/loginResolver';
 import RecipeResolver from './app/example/recipie.resolver';
+import { Communication, Context } from './app/interface/Context';
 
 dotenv.config();
 
@@ -28,9 +28,7 @@ if(process.env.NODE_ENV != 'production'){
   console.log({env});
 }
 
-export interface Context {
-  db: Db
-}
+
 
 
 async function init(){
@@ -52,7 +50,14 @@ async function init(){
      await database.init();
      const db = database.db;
 
-     const context: Context = {db};
+     const context = async({req, connection}:Communication):Promise<Context>=>{
+        const token = (req)?req.headers.authorization: connection.authorization;
+
+        return {
+          db,
+          token
+        };
+     };
 
   const server = new ApolloServer({
     schema,
