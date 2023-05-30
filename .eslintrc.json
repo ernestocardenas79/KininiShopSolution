@@ -1,0 +1,35 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": "xo",
+    "plugins": [
+        "prettier"
+    ],
+    "overrides": [
+        {
+            "extends": [
+                "prettier",
+                "xo-typescript"
+            ],
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ]
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": "off",
+        "@typescript-eslint/indent": ["error",4],
+        "prettier/prettier": ["off",
+        {
+            "singleQuote": true,
+            "tabWidth": 4
+        }]
+    }
+}
