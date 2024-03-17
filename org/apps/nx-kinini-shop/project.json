@@ -1,0 +1,56 @@
+{
+    "name": "nx-kinini-shop",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/nx-kinini-shop/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "platform": "node",
+                "outputPath": "dist/apps/nx-kinini-shop",
+                "format": ["cjs"],
+                "bundle": false,
+                "main": "apps/nx-kinini-shop/src/main.ts",
+                "tsConfig": "apps/nx-kinini-shop/tsconfig.app.json",
+                "assets": ["apps/nx-kinini-shop/src/assets"],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
+            },
+            "configurations": {
+                "development": {},
+                "production": {
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "nx-kinini-shop:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "nx-kinini-shop:build:development"
+                },
+                "production": {
+                    "buildTarget": "nx-kinini-shop:build:production"
+                }
+            }
+        }
+    },
+    "tags": []
+}
