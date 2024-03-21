@@ -1,0 +1,99 @@
+{
+  "name": "kinini-web-shop",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "standalone": false
+    },
+    "@schematics/angular:directive": {
+      "standalone": false
+    },
+    "@schematics/angular:pipe": {
+      "standalone": false
+    }
+  },
+  "sourceRoot": "kinini-web-shop/src",
+  "prefix": "knn",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "options": {
+        "outputPath": "dist/kinini-web-shop",
+        "index": "kinini-web-shop/src/index.html",
+        "browser": "kinini-web-shop/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "kinini-web-shop/tsconfig.app.json",
+        "assets": [
+          "kinini-web-shop/src/favicon.ico",
+          "kinini-web-shop/src/assets"
+        ],
+        "styles": [
+          "kinini-web-shop/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "kinini-web-shop:build:production"
+        },
+        "development": {
+          "buildTarget": "kinini-web-shop:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "kinini-web-shop:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
+        "tsConfig": "kinini-web-shop/tsconfig.spec.json",
+        "assets": [
+          "kinini-web-shop/src/favicon.ico",
+          "kinini-web-shop/src/assets"
+        ],
+        "styles": [
+          "kinini-web-shop/src/styles.css"
+        ],
+        "scripts": []
+      }
+    }
+  }
+}

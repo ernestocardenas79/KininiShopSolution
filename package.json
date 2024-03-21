@@ -4,6 +4,7 @@
     "license": "MIT",
     "scripts": {},
     "private": true,
+    "type": "module",
     "dependencies": {
         "@graphql-tools/graphql-file-loader": "^8.0.1",
         "@graphql-tools/load": "^8.0.2",
@@ -17,6 +18,11 @@
         "tslib": "^2.3.0"
     },
     "devDependencies": {
+        "@angular-devkit/build-angular": "^17.3.1",
+        "@angular/compiler-cli": "^17.3.0",
+        "@angular/core": "^17.3.1",
+        "@angular/platform-browser": "^17.3.1",
+        "@angular/platform-browser-dynamic": "^17.3.1",
         "@nx/angular": "^18.1.2",
         "@nx/esbuild": "18.1.1",
         "@nx/eslint": "18.1.1",
