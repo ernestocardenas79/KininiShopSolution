@@ -31,7 +31,7 @@
           "kinini-web-shop/src/assets"
         ],
         "styles": [
-          "kinini-web-shop/src/styles.css"
+          "kinini-web-shop/src/styles.scss"
         ],
         "scripts": []
       },
@@ -90,7 +90,7 @@
           "kinini-web-shop/src/assets"
         ],
         "styles": [
-          "kinini-web-shop/src/styles.css"
+          "kinini-web-shop/src/styles.scss"
         ],
         "scripts": []
       }
