@@ -2,7 +2,9 @@ import {Db, MongoClient} from 'mongodb';
 
 class Database {
 	async init() {
-  		const MONGO_DB = process.env.DATABASE ?? 'mongodb://localhost:27017/menag-online-shop';
+  		const MONGO_DB =
+            process.env.DATABASE ??
+            'mongodb://mongoadmin:LikeAnd@localhost:27017/menag-online-shop?authSource=admin';
 		const client = await MongoClient.connect(
 			MONGO_DB,
 			{

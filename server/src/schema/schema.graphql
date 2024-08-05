@@ -4,9 +4,9 @@ type Query {
     users: [User!]!
 }
 
-# type Mutation{
-
-# }
+type Mutation{
+  register(user: UserInput!): User
+}
 
 """
 Vamos a especificar la informacion detallada del usuario.
@@ -29,4 +29,30 @@ type User {
     registerDate: String!
     "Fecha de nacimiento - solo mayores de 18 anios"
     birthday: String!
+    "permisos del usuario"
+    role: Role!
+}
+
+"Input para anadir los datos del usuario"
+input UserInput {
+        "Identificador unico"
+    id: ID
+    "Nombre de pila"
+    name: String!
+    "Apellidos"
+    lastname: String!
+    "Correo electronico"
+    email: String!
+    "Password asociado a la cuenta"
+    password: String!
+    "Fecha de nacimiento - solo mayores de 18 anios"
+    birthday: String!
+    "permisos del usuario"
+    role: Role =CLIENT
+}
+
+
+enum Role {
+    CLIENT
+    ADMIN
 }

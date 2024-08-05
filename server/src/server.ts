@@ -1,8 +1,6 @@
 import {ApolloServer} from 'apollo-server-express';
 import compression from 'compression';
-import cors from 'cors';
 import express from 'express';
-import chalk from 'chalk';
 
 import Database from './lib/database';
 import schema from './schema';
@@ -31,7 +29,9 @@ async function init() {
 	const PORT = process.env.PORT ?? 2002;
 	await server.start();
 	server.applyMiddleware({app});
-	app.listen(PORT);
+	app.listen(PORT, () => {
+		console.log('Server listening on Port', PORT);
+	});
 }
 
 void init();
